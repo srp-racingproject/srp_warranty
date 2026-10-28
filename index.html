@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><meta name="description" content="ลงทะเบียนและตรวจสอบการรับประกันสินค้า SRP Racing Part">
+<link rel="manifest" href="./manifest.json"><title>SRP Warranty | รับประกันสินค้า</title>
+<style>
+:root{color-scheme:dark;--bg:#050a12;--panel:#0d1726;--line:#1d3047;--blue:#20a4ff;--cyan:#68d7ff;--text:#edf6ff;--muted:#93a9bf;--good:#35d39a;--bad:#ff6d7c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#102b49 0,transparent 48%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+.wrap{max-width:760px;margin:auto;padding:22px 16px 40px}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 26px}.logo{width:48px;height:48px;border:1px solid #2b75a7;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:18px;letter-spacing:1px;color:#fff;background:linear-gradient(145deg,#123c63,#07111f);box-shadow:0 0 24px #168de52a}.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;color:var(--muted);margin:3px 0 0;letter-spacing:1.4px}
+.hero{margin:10px 0 22px}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:2px;font-weight:700}.hero h2{font-size:clamp(27px,6vw,38px);line-height:1.2;margin:8px 0}.hero p{color:var(--muted);line-height:1.7;margin:0}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:24px 0 14px}.tab{padding:13px;border:1px solid var(--line);background:#0a1421;color:var(--muted);border-radius:12px;font-weight:700;font-size:14px}.tab.active{background:#123657;color:white;border-color:#227fbd}
+.card{background:linear-gradient(145deg,#101e30,#0a1320);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 18px 50px #0003}.card h3{margin:0 0 6px;font-size:20px}.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+label{display:block;font-size:13px;color:#c3d4e5;margin:14px 0 7px}input{width:100%;background:#07101b;border:1px solid #263c54;border-radius:10px;padding:13px 12px;color:#fff;font:inherit;outline:none}input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #20a4ff20}
+button.primary{width:100%;border:0;border-radius:11px;padding:14px 16px;margin-top:18px;background:linear-gradient(90deg,#0878cb,#20a4ff);color:#fff;font-weight:800;font-size:15px}
+.result{display:none;margin-top:16px;border:1px solid var(--line);background:#07111d;border-radius:12px;padding:15px;line-height:1.65}.result.good{border-color:#217a60}.result.bad{border-color:#8b3442}.result strong{color:var(--cyan)}.row{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid #1a2a3d}.row:last-child{border-bottom:0}.row span:first-child{color:var(--muted)}.pill{display:inline-block;padding:4px 9px;border-radius:99px;font-size:12px;font-weight:800;background:#183c30;color:#6ef0bb}.pill.off{background:#45212a;color:#ff9da7}.foot{color:#667f98;font-size:12px;text-align:center;margin-top:24px}.hidden{display:none!important}
+</style>
+</head>
+<body><main class="wrap">
+<header class="brand"><div class="logo">SRP</div><div><h1>SRP WARRANTY</h1><p>RACING PART · PRODUCT CARE</p></div></header>
+<section class="hero"><div class="eyebrow">OFFICIAL WARRANTY CENTER</div><h2>มั่นใจในทุกชิ้นส่วน<br>ด้วยการรับประกันจาก SRP</h2><p>ลงทะเบียนสินค้า หรือเช็กสถานะการรับประกันด้วยหมายเลข Serial Number</p></section>
+<div class="tabs"><button class="tab active" id="tab-register" type="button">ลงทะเบียนรับประกัน</button><button class="tab" id="tab-check" type="button">ตรวจสอบประกัน</button></div>
+<section class="card" id="register-panel"><h3>ลงทะเบียนสินค้า</h3><p class="sub">กรอกข้อมูลตามใบเสร็จและฉลากบนสินค้า</p>
+<form id="register-form">
+<label for="serial">Serial Number *</label><input id="serial" required maxlength="100" autocomplete="off" placeholder="เช่น SRP-PCX160-0001">
+<label for="customer">ชื่อ-นามสกุล *</label><input id="customer" required maxlength="120" autocomplete="name" placeholder="ชื่อผู้ซื้อ">
+<label for="phone">เบอร์โทรศัพท์ *</label><input id="phone" required maxlength="30" inputmode="tel" autocomplete="tel" placeholder="เบอร์โทรที่ติดต่อได้">
+<label for="email">อีเมล (ถ้ามี)</label><input id="email" type="email" maxlength="160" autocomplete="email" placeholder="name@example.com">
+<label for="purchase-date">วันที่ซื้อ *</label><input id="purchase-date" type="date" required>
+<button class="primary" type="submit">ยืนยันลงทะเบียน</button></form><div class="result" id="register-result" role="status"></div></section>
+<section class="card hidden" id="check-panel"><h3>ตรวจสอบการรับประกัน</h3><p class="sub">กรอก Serial Number ที่อยู่บนสินค้า</p>
+<form id="check-form"><label for="check-serial">Serial Number</label><input id="check-serial" required maxlength="100" autocomplete="off" placeholder="กรอกหมายเลข Serial"><button class="primary" type="submit">ตรวจสอบสถานะ</button></form><div class="result" id="check-result" role="status"></div></section>
+<div class="foot">© <span id="year"></span> SRP Racing Part · Warranty System</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+<script>
+const sb=window.supabase.createClient(SRP_CONFIG.url,SRP_CONFIG.publishableKey);
+const $=id=>document.getElementById(id);
+function showTab(which){const reg=which==='register';$('register-panel').classList.toggle('hidden',!reg);$('check-panel').classList.toggle('hidden',reg);$('tab-register').classList.toggle('active',reg);$('tab-check').classList.toggle('active',!reg)}
+$('tab-register').onclick=()=>showTab('register');$('tab-check').onclick=()=>showTab('check');$('year').textContent=new Date().getFullYear();
+$('purchase-date').max=new Date().toISOString().slice(0,10);
+function resultBox(el,html,ok){el.innerHTML=html;el.className='result '+(ok?'good':'bad');el.style.display='block'}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateFmt=s=>s?new Date(s+'T00:00:00').toLocaleDateString('th-TH',{year:'numeric',month:'long',day:'numeric'}):'-';
+$('register-form').addEventListener('submit',async e=>{e.preventDefault();const btn=e.submitter;btn.disabled=true;btn.textContent='กำลังบันทึก...';const box=$('register-result');box.style.display='none';
+try{const {data,error}=await sb.rpc('srp_register_warranty',{p_serial_number:$('serial').value.trim(),p_customer_name:$('customer').value.trim(),p_phone:$('phone').value.trim(),p_email:$('email').value.trim()||null,p_purchase_date:$('purchase-date').value});if(error)throw error;if(!data?.success){const messages={'invalid serial not found':'ไม่พบ Serial นี้ในระบบ กรุณาตรวจสอบหมายเลขอีกครั้ง','serial already registered':'Serial นี้ลงทะเบียนรับประกันไปแล้ว','missing required fields':'กรุณากรอกข้อมูลที่จำเป็นให้ครบ','purchase date cannot be in the future':'วันที่ซื้อไม่สามารถเป็นวันในอนาคตได้'};resultBox(box,esc(messages[data?.message]||'ไม่สามารถลงทะเบียนได้ กรุณาตรวจสอบข้อมูล'),false)}else{resultBox(box,`<b>ลงทะเบียนสำเร็จ</b><div class="row"><span>สินค้า</span><strong>${esc(data.product_name)} ${esc(data.model||'')}</strong></div><div class="row"><span>Serial</span><strong>${esc(data.serial_number)}</strong></div><div class="row"><span>หมดประกัน</span><strong>${dateFmt(data.warranty_end)}</strong></div><p style="color:#93a9bf;font-size:12px;margin-bottom:0">กรุณาเก็บหมายเลข Serial และหลักฐานการซื้อไว้</p>`,true);$('register-form').reset();$('purchase-date').max=new Date().toISOString().slice(0,10)}}catch(err){console.error(err);resultBox(box,'เชื่อมต่อระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง',false)}finally{btn.disabled=false;btn.textContent='ยืนยันลงทะเบียน'}});
+$('check-form').addEventListener('submit',async e=>{e.preventDefault();const btn=e.submitter;btn.disabled=true;btn.textContent='กำลังตรวจสอบ...';const box=$('check-result');box.style.display='none';
+try{const {data,error}=await sb.rpc('srp_check_warranty',{p_serial_number:$('check-serial').value.trim()});if(error)throw error;if(!data?.found){resultBox(box,'ไม่พบ Serial นี้ในระบบ กรุณาตรวจสอบหมายเลขอีกครั้ง',false)}else{let html=`<div class="row"><span>สินค้า</span><strong>${esc(data.product_name)} ${esc(data.model||'')}</strong></div><div class="row"><span>Serial</span><strong>${esc(data.serial_number)}</strong></div><div class="row"><span>ระยะประกัน</span><strong>${esc(data.warranty_months)} เดือน</strong></div>`;if(data.registered){html+=`<div class="row"><span>วันที่ซื้อ</span><strong>${dateFmt(data.purchase_date)}</strong></div><div class="row"><span>หมดประกัน</span><strong>${dateFmt(data.warranty_end)}</strong></div><p><span class="pill ${data.active?'':'off'}">${data.active?'อยู่ในระยะประกัน':'หมดระยะประกัน'}</span></p>`}else{html+='<p>สินค้ายังไม่ได้ลงทะเบียนรับประกัน</p>'}resultBox(box,html,true)}}catch(err){console.error(err);resultBox(box,'เชื่อมต่อระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง',false)}finally{btn.disabled=false;btn.textContent='ตรวจสอบสถานะ'}});
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>

@@ -1,0 +1,13 @@
+{
+  "name": "SRP Warranty",
+  "short_name": "SRP Warranty",
+  "description": "ลงทะเบียนและตรวจสอบการรับประกันสินค้า SRP Racing Part",
+  "lang": "th",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050a12",
+  "theme_color": "#07111f",
+  "icons": []
+}
